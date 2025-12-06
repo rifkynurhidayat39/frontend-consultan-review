@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Consultation / Workforce Solutions</title>
+  <link rel="stylesheet" href="home.css">
+  <!-- added fontawesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- BEGIN: new header (site navigation) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- mobile hamburger -->
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+
+      <nav id="mainNav" class="main-nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">Program <span class="caret">▾</span></a>
+            <ul class="dropdown" aria-label="Program submenu">
+              <li><a href="#">Student Exchanges</a></li>
+              <li><a href="#">Overseas Study</a></li>
+              <li><a href="#">Internship Study</a></li>
+              <li><a href="#">Career Consultation</a></li>
+            </ul>
+          </li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Registration</a></li>
+          <li class="has-dropdown">
+            <a href="#" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret">▾</span></a>
+            <ul class="dropdown" aria-label="Gallery submenu">
+              <li><a href="#">Video</a></li>
+              <li><a href="#">Foto</a></li>
+            </ul>
+          </li>
+          <li><a href="#">News Update</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-selector">
+          <button class="lang">ID <span class="caret">▾</span></button>
+          <ul class="lang-dropdown">
+            <li><a href="#" class="active">ID</a></li>
+            <li><a href="#">EN</a></li>
+          </ul>
+        </div>
+        <a class="auth-btn" href="#">Login/Sign Up</a>
+      </div>
+    </div>
+  </header>
+  <!-- END: new header -->
+
+  <!-- HERO / BANNER SLIDER -->
+  <header class="hero">
+    <div class="slider" id="slider" aria-roledescription="carousel">
+      <div class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 3" style="background-image:url('https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1400&q=60');">
+        <div class="overlay">
+          <small class="kicker">Your Trusted Partner in</small>
+          <h1>Your Trusted Partner in Workforce Solutions &amp; Career Success</h1>
+          <p class="lead">We connect ambition with opportunity through student exchange, internships and career consulting.</p>
+          <a class="btn" href="#programs">See All Programs</a>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3" style="background-image:url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1400&q=60');">
+        <div class="overlay">
+          <small class="kicker">Empowering Careers</small>
+          <h1>Empowering Careers, Ensuring Compliance</h1>
+          <p class="lead">Explore opportunities worldwide and build a global career with guidance from our experts.</p>
+          <a class="btn" href="#about">Learn More</a>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=60');">
+        <div class="overlay">
+          <small class="kicker">Global Programs</small>
+          <h1>Global Study &amp; Internship Programs</h1>
+          <p class="lead">Student exchange, overseas internships and career consultation to grow your potential.</p>
+          <a class="btn" href="#contact">Contact Us</a>
+        </div>
+      </div>
+
+      <button class="nav prev" id="prev" aria-label="Previous slide">&#10094;</button>
+      <button class="nav next" id="next" aria-label="Next slide">&#10095;</button>
+
+      <div class="dots" id="dots" role="tablist" aria-hidden="false"></div>
+    </div>
+  </header> <!-- end hero -->
+
+  <!-- REMOVED: feature-section (dipindah ke bawah intro-wrapper) -->
+  
+  <section class="intro-wrapper">
+    <div class="intro">
+      <div class="card">
+        <h3>Empowering Careers, Ensuring Compliance</h3>
+        <p>Explore opportunities in a digital, monitored world that is like to be face-to-face in the near future.</p>
+      </div>
+
+      <div class="side-image">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=60" alt="student smiling">
+      </div>
+    </div>
+  </section> <!-- end intro-wrapper -->
+
+  <!-- BARU: About section standalone (kanan dari feature-section) -->
+  <section class="about-section">
+    <div class="about-custom">
+      <div class="about-images">
+        <div class="about-main">
+          <img src="indoap.png" alt="indoapps main">
+        </div>
+        <div class="about-tiles">
+          <img src="teknolo.png" alt="tile 1">
+          <img src="teknologi-informasi.jpg" alt="tile 2">
+          <img src="student.jpg" alt="tile 3">
+          <img src="images (8).jpg" alt="tile 4">
+        </div>
+      </div>
+
+      <div class="about-content">
+        <h3 class="about-title">About Consultation<br>Denpasar Institute</h3>
+        <p class="about-text">
+          Welcome to Consultation Denpasar Institute, your trusted partner in education consulting, student exchange, and global career development.
+          We provide expert guidance for overseas study and internships plus personalised career consultation to help you reach your fullest potential.
+        </p>
+        
+      </div>
+    </div>
+  </section>
+  <!-- END: about-section -->
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="stats">
+      <div style="width: 100%; text-align: center; margin-bottom: 24px;">
+        <p class="stats-title">People love Denpasar Institute</p>
+        <h2 class="stats-heading">Stats Overview</h2>
+      </div>
+      <div class="stat"><strong>100</strong><span>Students</span></div>
+      <div class="stat"><strong>100</strong><span>Countries</span></div>
+      <div class="stat"><strong>100</strong><span>Candidates</span></div>
+      <div class="stat"><strong>100</strong><span>Companies</span></div>
+    </section>
+
+    <section class="programs" id="programs">
+      <h2>Explore Our Programs</h2>
+      <div class="grid">
+        <article class="program">
+          <img src="https://images.unsplash.com/photo-1527252244193-67c3b3d8b2c7?auto=format&fit=crop&w=600&q=60" alt="">
+          <h4>Student Exchange</h4>
+          <p>International exchange to develop cross-cultural skills and academic growth.</p>
+          <a href="#" class="read-more">Read More</a>
+        </article>
+
+        <article class="program">
+          <img src="https://images.unsplash.com/photo-1506619216599-9d16d0906b0d?auto=format&fit=crop&w=600&q=60" alt="">
+          <h4>Overseas Study & Internship</h4>
+          <p>Internships and study programs abroad with partner institutions.</p>
+          <a href="#" class="read-more">Read More</a>
+        </article>
+
+        <article class="program">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=60" alt="">
+          <h4>Career Consultation</h4>
+          <p>Personalised career planning, resume help, and placement guidance.</p>
+          <a href="#" class="read-more">Read More</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="how">
+      <h2>How it Works?</h2>
+
+      <div class="steps">
+        <!-- Step 1: text left, image right -->
+        <div class="step-row">
+          <div class="step-text">
+            <h4>Step 1 : Consultation</h4>
+            <p>Meet our education consultants and share your study or career goals. We'll help you explore the best international programs that fit your ambitions.</p>
+          </div>
+          <div class="step-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=60" alt="consultation">
+          </div>
+        </div>
+
+        <!-- Step 2: image left, text right -->
+        <div class="step-row step-row-reverse">
+          <div class="step-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=60" alt="planning">
+          </div>
+          <div class="step-text">
+            <h4>Step 2 : Planning</h4>
+            <p>Meet our education consultants and share your study or career goals. We'll help you explore the best international programs that fit your ambitions.</p>
+          </div>
+        </div>
+
+        <!-- Step 3: text left, image right -->
+        <div class="step-row">
+          <div class="step-text">
+            <h4>Step 3 : Placement</h4>
+            <p>Meet our education consultants and share your study or career goals. We'll help you explore the best international programs that fit your ambitions.</p>
+          </div>
+          <div class="step-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=60" alt="placement">
+          </div>
+        </div>
+
+        <!-- Step 4: image left, text right -->
+        <div class="step-row step-row-reverse">
+          <div class="step-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=60" alt="follow-up">
+          </div>
+          <div class="step-text">
+            <h4>Step 4 : Follow-up</h4>
+            <p>Meet our education consultants and share your study or career goals. We'll help you explore the best international programs that fit your ambitions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>OUR CLIENT SAY</h2>
+      <p class="testimonials-subtitle">People everywhere loving Denpasar Institute</p>
+      
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="test-avatar">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=60" alt="Nur">
+          </div>
+          <p class="quote">Mantap Pisan bereun euu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.</p>
+          <h5>Nur</h5>
+        </div>
+
+        <div class="test-card">
+          <div class="test-avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=60" alt="Nur">
+          </div>
+          <p class="quote">Mantap Pisan bereun euu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.</p>
+          <h5>Nur</h5>
+        </div>
+
+        <div class="test-card">
+          <div class="test-avatar">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=60" alt="Nur">
+          </div>
+          <p class="quote">Mantap Pisan bereun euu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.</p>
+          <h5>Nur</h5>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <!-- Kolom 1: Contact -->
+      <div class="footer-column">
+        <h3>CONTACT US</h3>
+        <p>
+          Jl. Ganetri IV No.4 DPS 80237 Bali<br>
+          Jl. Sari Dana No.1 DPS 80116 Bali
+        </p>
+        <p>📞 <a href="tel:+6287865309966" class="footer-link">087865309966</a></p>
+        <p>📧 <a href="mailto:info@denpasarinstitute.com" class="footer-link">info@denpasarinstitute.com</a></p>
+        <a href="#" target="_blank" class="footer-link">denpasarinstitute.com</a><br>
+        <a href="https://maps.google.com/?q=Denpasar+Institute+Bali" target="_blank">
+          <button class="footer-btn">Find Our Way</button>
+        </a>
+      </div>
+
+      <!-- Kolom 2: About -->
+      <div class="footer-column">
+        <h3>ABOUT US</h3>
+        <p>
+          Denpasar Institute adalah Lembaga Riset & Pengembangan SDM yang berfokus pada riset, 
+          pengembangan kompetensi, dan kolaborasi kegiatan sosial melalui CSR Program.
+        </p>
+      </div>
+
+      <!-- Kolom 3: Program -->
+      <div class="footer-column">
+        <h3>OUR PROGRAM</h3>
+        <ul>
+          <li><a href="#" target="_blank">Student Exchanges</a></li>
+          <li><a href="#" target="_blank">Overseas Study</a></li>
+          <li><a href="#" target="_blank">Internship Study</a></li>
+          <li><a href="#" target="_blank">Career Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bagian Bawah Footer -->
+    <div class="footer-bottom">
+      <p>
+        © 2025 Denpasar Institute. Designed by 
+        <a href="https://indoapps.id" target="_blank" class="highlight">PT. INDOAPPS SOLUSINDO</a> |
+        <a href="#" target="_blank">Privacy Policy</a> |
+        <a href="#" target="_blank">Terms & Condition</a>
+      </p>
+
+      <!-- Social Media Icons -->
+      <div class="social-inline">
+        <a href="#" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- ...existing code (end body) ... -->
+  <script>
+    (function(){
+  const slides = document.querySelectorAll('.slide');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const dotsWrap = document.getElementById('dots');
+  let current = 0;
+  let timer = null;
+  const interval = 5000;
+
+  // create dots
+  slides.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.dataset.index = i;
+    btn.setAttribute('aria-label', `Go to slide ${i+1}`);
+    if(i===0) btn.classList.add('active');
+    btn.addEventListener('click', ()=> { goto(i); resetTimer(); });
+    dotsWrap.appendChild(btn);
+  });
+
+  function show(idx){
+    slides.forEach((s,i)=> {
+      s.classList.toggle('active', i===idx);
+      s.setAttribute('aria-hidden', i===idx ? 'false' : 'true');
+    });
+    Array.from(dotsWrap.children).forEach((d,i)=> d.classList.toggle('active', i===idx));
+    current = idx;
+  }
+
+  function goto(i){
+    if(i < 0) i = slides.length - 1;
+    if(i >= slides.length) i = 0;
+    show(i);
+  }
+
+  prev.addEventListener('click', ()=> { goto(current-1); resetTimer(); });
+  next.addEventListener('click', ()=> { goto(current+1); resetTimer(); });
+
+  function startTimer(){
+    timer = setInterval(()=> goto(current+1), interval);
+  }
+  function resetTimer(){
+    clearInterval(timer);
+    startTimer();
+  }
+
+  // pause on hover
+  const slider = document.getElementById('slider');
+  slider.addEventListener('mouseenter', ()=> clearInterval(timer));
+  slider.addEventListener('mouseleave', ()=> startTimer());
+
+  // keyboard navigation
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowLeft'){ goto(current-1); resetTimer(); }
+    if(e.key === 'ArrowRight'){ goto(current+1); resetTimer(); }
+  });
+
+  // basic touch / swipe support
+  let touchStartX = 0;
+  slider.addEventListener('touchstart', (e)=> { touchStartX = e.changedTouches[0].clientX; clearInterval(timer); }, {passive:true});
+  slider.addEventListener('touchend', (e)=> {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 40){
+      if(dx > 0) goto(current-1); else goto(current+1);
+    }
+    startTimer();
+  }, {passive:true});
+
+  // init
+  show(0);
+  startTimer();
+})();
+  </script>
+</body>
+</html>
