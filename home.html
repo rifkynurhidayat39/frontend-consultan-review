@@ -8,6 +8,7 @@
   <!-- added fontawesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
   <!-- BEGIN: new header (site navigation) -->
   <header class="site-header">
@@ -21,22 +22,22 @@
 
       <nav id="mainNav" class="main-nav" role="navigation" aria-label="Main navigation">
         <ul class="nav-list">
-          <li><a href="home.html"class="active" >Home</a></li>
+          <li><a href="home.html" class="active">Home</a></li>
           <li><a href="aboutus.html">About Us</a></li>
           <li class="has-dropdown">
-            <a href="program.html">Program <span class="caret">▾</span></a>
-            <ul class="dropdown">
+            <a href="program.html" aria-haspopup="true" aria-expanded="false">Program <span class="caret">▾</span></a>
+            <ul class="dropdown" aria-label="Program submenu">
               <li><a href="detail program.html">Student Exchanges</a></li>
               <li><a href="detail program.html">Overseas Study</a></li>
               <li><a href="detail program.html">Internship Study</a></li>
               <li><a href="detail program.html">Career Consultation</a></li>
             </ul>
           </li>
-          <li><a href="">How It Works</a></li>
+          <li><a href="#">How It Works</a></li>
           <li><a href="register.html">Registration</a></li>
           <li class="has-dropdown">
-            <a href="gallery.html">Gallery <span class="caret">▾</span></a>
-            <ul class="dropdown">
+            <a href="gallery.html" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret">▾</span></a>
+            <ul class="dropdown" aria-label="Gallery submenu">
               <li><a href="gallery.html">Video</a></li>
               <li><a href="gallery.html">Foto</a></li>
             </ul>
