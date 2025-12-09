@@ -143,14 +143,17 @@
   <!-- MAIN CONTENT -->
   <main>
     <section class="stats">
-      <div style="width: 100%; text-align: center; margin-bottom: 24px;">
-        <p class="stats-title">People love Denpasar Institute</p>
+      <div class="stats-header">
+        <div class="stats-icon"></div>
         <h2 class="stats-heading">Stats Overview</h2>
+        <p class="stats-title">People love Denpasar Institute</p>
       </div>
-      <div class="stat"><strong>100</strong><span>Students</span></div>
-      <div class="stat"><strong>100</strong><span>Countries</span></div>
-      <div class="stat"><strong>100</strong><span>Candidates</span></div>
-      <div class="stat"><strong>100</strong><span>Companies</span></div>
+      <div class="stats-grid">
+        <div class="stat"><strong>100</strong><span>Students</span></div>
+        <div class="stat"><strong>100</strong><span>Countries</span></div>
+        <div class="stat"><strong>100</strong><span>Candidates</span></div>
+        <div class="stat"><strong>100</strong><span>Companies</span></div>
+      </div>
     </section>
 
     <section class="programs" id="programs">
@@ -229,35 +232,10 @@
       </div>
     </section>
 
-    <section class="testimonials">
+    <section class="reviews-section">
       <h2>OUR CLIENT SAY</h2>
-      <p class="testimonials-subtitle">People everywhere loving Denpasar Institute</p>
-      
-      <div class="test-grid">
-        <div class="test-card">
-          <div class="test-avatar">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=60" alt="Nur">
-          </div>
-          <p class="quote">Mantap Pisan bereun euu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.</p>
-          <h5>Nur</h5>
-        </div>
-
-        <div class="test-card">
-          <div class="test-avatar">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=60" alt="Nur">
-          </div>
-          <p class="quote">Mantap Pisan bereun euu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.</p>
-          <h5>Nur</h5>
-        </div>
-
-        <div class="test-card">
-          <div class="test-avatar">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=60" alt="Nur">
-          </div>
-          <p class="quote">Mantap Pisan bereun euu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.</p>
-          <h5>Nur</h5>
-        </div>
-      </div>
+      <br> <br>
+      <div class="reviews-container" id="reviewsContainer"></div>
     </section>
   </main>
 
@@ -392,6 +370,56 @@
   show(0);
   startTimer();
 })();
+
+// Navbar scroll effect - transparan di atas banner, putih saat scroll
+(function() {
+  const header = document.querySelector('.site-header');
+  const hero = document.querySelector('.hero');
+  
+  if (!header || !hero) return;
+  
+  function handleScroll() {
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+  
+  // Check on load
+  handleScroll();
+  
+  // Check on scroll
+  window.addEventListener('scroll', handleScroll);
+})();
+
+// Review random + active middle (sama seperti gallery)
+const reviewsData = [
+  { name: "Nur", text: "Mantap pisan! Lorem ipsum dolor sit amet, consectetur adipiscing elit.", img: "gallery/orang1.jpg" },
+  { name: "Haiki", text: "Pengalaman luar biasa belajar di luar negeri!", img: "gallery/orang2.jpg" },
+  { name: "Rani", text: "Programnya sangat membantu dan informatif.", img: "gallery/orang3.jpg" },
+  { name: "Fajar", text: "Sangat direkomendasikan buat mahasiswa aktif!", img: "gallery/orang1.jpg" },
+  { name: "Sinta", text: "Stafnya ramah banget dan responsif!", img: "gallery/orang2.jpg" }
+];
+
+const container = document.getElementById("reviewsContainer");
+if (container) {
+  function renderReviews() {
+    const shuffled = [...reviewsData].sort(() => Math.random() - 0.5);
+    const visible = shuffled.slice(0, 3);
+    container.innerHTML = visible.map((r, i) => `
+      <div class="review-card ${i === 1 ? "active" : ""}">
+        <img src="${r.img}" class="review-avatar" alt="${r.name}">
+        <div class="review-name">${r.name}</div>
+        <div class="review-text">${r.text}</div>
+      </div>
+    `).join("");
+  }
+  renderReviews();
+  setInterval(renderReviews, 5000);
+}
   </script>
 </body>
 </html>
