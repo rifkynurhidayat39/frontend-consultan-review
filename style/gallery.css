@@ -37,6 +37,7 @@
     letter-spacing: 0.6px;
     font-size: 18px;
     color: #111;
+    font-family: Inter, system-ui, Arial, sans-serif;
   }
   
   /* Main Navigation */
@@ -74,6 +75,7 @@
     letter-spacing: 0.6px;
     white-space: nowrap;
     transition: color 0.2s;
+    font-family: Inter, system-ui, Arial, sans-serif;
   }
   
   .nav-list a:hover,
@@ -106,6 +108,7 @@
     align-items: center;
     gap: 6px;
     color: #222;
+    font-family: Inter, system-ui, Arial, sans-serif;
   }
   
   .lang-dropdown {
@@ -136,6 +139,7 @@
     text-decoration: none;
     color: #222;
     font-size: 13px;
+    font-family: Inter, system-ui, Arial, sans-serif;
   }
   
   .lang-dropdown a:hover,
@@ -153,6 +157,7 @@
     padding: 8px 16px;
     border-radius: 4px;
     transition: background-color 0.2s;
+    font-family: Inter, system-ui, Arial, sans-serif;
   }
   
   .auth-btn:hover {
@@ -251,6 +256,7 @@
     font-size: 14px;
     text-transform: none; /* reset uppercase */
     letter-spacing: normal;
+    font-family: Inter, system-ui, Arial, sans-serif;
   }
   .dropdown a:hover { 
     background: #f5f5f5;
@@ -498,6 +504,7 @@
     font-size: 2.2rem;
     font-weight: 700;
     color: #1a1a1a;
+    font-family: 'Poppins', sans-serif;
   }
   
   .gallery-container {
@@ -509,6 +516,7 @@
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+    font-family: 'Poppins', sans-serif;
   }
   
   .gallery-item {
@@ -544,6 +552,11 @@
     transition: opacity 0.3s ease;
     text-align: center;
     padding: 0 8px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .gallery-item .overlay p {
+    font-family: 'Poppins', sans-serif;
   }
   
   .gallery-item:hover .overlay {
