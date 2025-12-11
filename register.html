@@ -227,5 +227,94 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Navbar scroll effect - transparan di atas, putih saat scroll
+  (function() {
+    const header = document.querySelector('.site-header');
+    
+    if (!header) return;
+    
+    function handleScroll() {
+      const scrollPosition = window.scrollY;
+      
+      if (scrollPosition > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+    
+    // Check on load
+    handleScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', handleScroll);
+  })();
+
+  // Mobile hamburger menu toggle
+  (function() {
+    const hamburger = document.querySelector('.hamburger');
+    const mainNav = document.getElementById('mainNav');
+    const dropdownToggles = document.querySelectorAll('.has-dropdown > a');
+    
+    if (!hamburger || !mainNav) return;
+    
+    // Toggle menu on hamburger click
+    hamburger.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      mainNav.classList.toggle('open');
+    });
+    
+    // Close menu when clicking on a link
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Don't close if it's a dropdown toggle
+        if (!this.closest('.has-dropdown')) {
+          hamburger.setAttribute('aria-expanded', 'false');
+          mainNav.classList.remove('open');
+        }
+      });
+    });
+    
+    // Toggle dropdown menus on mobile (click instead of hover)
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        const dropdown = this.nextElementSibling;
+        const isOpen = dropdown.classList.toggle('open');
+        this.setAttribute('aria-expanded', isOpen);
+        
+        // Close other dropdowns
+        dropdownToggles.forEach(other => {
+          if (other !== this) {
+            other.setAttribute('aria-expanded', 'false');
+            if (other.nextElementSibling) {
+              other.nextElementSibling.classList.remove('open');
+            }
+          }
+        });
+        
+        e.preventDefault();
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.site-header')) {
+        hamburger.setAttribute('aria-expanded', 'false');
+        mainNav.classList.remove('open');
+        dropdownToggles.forEach(toggle => {
+          toggle.setAttribute('aria-expanded', 'false');
+          if (toggle.nextElementSibling) {
+            toggle.nextElementSibling.classList.remove('open');
+          }
+        });
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>

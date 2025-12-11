@@ -14,13 +14,22 @@ body {
 /* NAVBAR */
 /* Header */
 .site-header {
-  background: #fff;
-  border-bottom: 1px solid #e6e6e6;
-  position: sticky;
+  background: transparent;
+  border-bottom: none;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 100;
+  box-shadow: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Navbar dengan background putih saat scroll */
+.site-header.scrolled {
+  background: #fff;
+  border-bottom: 1px solid #e6e6e6;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: sticky;
 }
 
 .header-inner {
@@ -30,6 +39,7 @@ body {
   height: 70px;
   position: relative;
   gap: 40px;
+  padding: 0 18px;
 }
 
 /* Logo styling */
@@ -78,7 +88,7 @@ body {
 
 .nav-list a {
   text-decoration: none;
-  color: #222;
+  color: #fff;
   font-size: 13px;
   padding: 8px 0;
   display: flex;
@@ -92,6 +102,16 @@ body {
 
 .nav-list a:hover,
 .nav-list a.active {
+  color: #ffeb3b;
+}
+
+/* Text putih saat transparan, hitam saat scroll */
+.site-header.scrolled .nav-list a {
+  color: #222;
+}
+
+.site-header.scrolled .nav-list a:hover,
+.site-header.scrolled .nav-list a.active {
   color: #b21a1a;
 }
 
@@ -111,7 +131,7 @@ body {
 
 .lang {
   background: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255,255,255,0.3);
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 13px;
@@ -119,6 +139,12 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
+  color: #fff;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.site-header.scrolled .lang {
+  border: 1px solid #ddd;
   color: #222;
 }
 
@@ -201,9 +227,15 @@ body {
 .hamburger-inner::after {
   width: 24px;
   height: 2px;
-  background-color: #222;
+  background-color: #fff;
   position: absolute;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.3s;
+}
+
+.site-header.scrolled .hamburger-inner,
+.site-header.scrolled .hamburger-inner::before,
+.site-header.scrolled .hamburger-inner::after {
+  background-color: #222;
 }
 
 .hamburger-inner::before,
@@ -275,18 +307,24 @@ body {
   background: #d60000;
   color: white;
   text-align: center;
-  padding: 45px 20px;
+  padding: 80px 20px 100px; /* lebih tinggi */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* tulisan turun ke bawah */
 }
 
+
 .reg-header h1 {
-  font-size: 34px;
-  margin-bottom: 12px;
+  font-size: 40px;
+  margin-bottom: 14px;
+  font-weight: 700;
 }
 
 .reg-header p {
-  font-size: 15px;
+  font-size: 17px;
   opacity: 0.95;
 }
+
 
 .reg-header a {
   color: #ffe38f;
@@ -645,6 +683,105 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  /* Hamburger Menu Styling */
+  .hamburger {
+    display: block;
+    margin-right: auto;
+  }
+  
+  /* Hide full nav on tablet, show only in mobile dropdown */
+  .main-nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    display: flex;
+    justify-content: center;
+    z-index: 99;
+  }
+  
+  .main-nav.open {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .nav-list > li {
+    border-bottom: 1px solid #f0f0f0;
+    height: auto;
+  }
+  
+  .nav-list a {
+    color: #222;
+    font-size: 14px;
+    padding: 14px 16px;
+    text-transform: uppercase;
+    height: auto;
+  }
+  
+  .nav-list a:hover,
+  .nav-list a.active {
+    background: #f5f5f5;
+    color: #b21a1a;
+  }
+  
+  .dropdown {
+    position: static;
+    transform: none;
+    top: auto;
+    background: #f9f9f9;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    min-width: auto;
+    border-radius: 0;
+    padding: 0;
+    display: none;
+  }
+  
+  .dropdown.open {
+    display: block;
+  }
+  
+  .dropdown a {
+    padding: 12px 32px;
+    font-size: 13px;
+    color: #555;
+  }
+  
+  .dropdown a:hover {
+    background: #e8e8e8;
+    color: #b21a1a;
+  }
+  
+  .header-right {
+    gap: 8px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .lang-selector {
+    display: none;
+  }
+  
+  .auth-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
   .footer-container {
     flex-direction: column;
     text-align: center;
@@ -661,5 +798,36 @@ body {
     position: static;
     justify-content: center;
     margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hamburger {
+    display: block;
+    padding: 10px;
+  }
+  
+  .header-inner {
+    padding: 0 8px;
+    height: 60px;
+  }
+  
+  .main-nav.open {
+    max-height: 400px;
+  }
+  
+  .nav-list a {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+  
+  .dropdown a {
+    padding: 10px 28px;
+    font-size: 12px;
+  }
+  
+  .auth-btn {
+    padding: 6px 10px;
+    font-size: 11px;
   }
 }
