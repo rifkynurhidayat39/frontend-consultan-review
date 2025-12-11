@@ -1,3 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* ==================== NAVBAR ==================== */
 /* Header */
 .site-header {
     background: #fff;
@@ -16,6 +34,7 @@
     height: 70px;
     position: relative;
     gap: 40px;
+    padding: 0 20px;
   }
   
   /* Logo styling */
@@ -402,17 +421,20 @@
 .faq-header {
   text-align: center;
   padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-breadcrumb {
   font-size: 10px;
   color: #888;
   margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-breadcrumb a {
   color: #888;
   text-decoration: none;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-title {
@@ -420,6 +442,7 @@
   font-size: 24px;
   margin-bottom: 12px;
   font-weight: bold;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-subtitle {
@@ -428,11 +451,13 @@
   line-height: 1.4;
   max-width: 650px;
   margin: auto;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-subtitle a {
   color: #c40000;
   font-weight: bold;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* IMAGE SLOT */
@@ -464,10 +489,12 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-column {
   width: 48%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-column h3 {
@@ -475,10 +502,12 @@
   color: #c40000;
   margin-bottom: 15px;
   font-size: 16px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-list {
   list-style: none;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-list li {
@@ -490,6 +519,7 @@
   font-size: 13px;
   color: #222;
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  font-family: 'Poppins', sans-serif;
 }
 
 /* HELP BOX */
@@ -502,17 +532,20 @@
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-help-box h3 {
   color: #c40000;
   margin-bottom: 18px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .faq-form input,
@@ -522,6 +555,7 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 13px;
+  font-family: 'Poppins', sans-serif;
 }
 
 textarea {
@@ -543,4 +577,88 @@ textarea {
 
 .faq-bottom-space {
   height: 100px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    display: none;
+  }
+
+  .main-nav.open {
+    display: block;
+    max-height: 500px;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    justify-content: flex-start;
+    padding: 15px 0;
+  }
+
+  .nav-list > li {
+    height: auto;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-list a {
+    height: auto;
+    padding: 12px 20px;
+  }
+
+  .has-dropdown > a {
+    cursor: pointer;
+  }
+
+  .dropdown {
+    position: static;
+    transform: none;
+    background: #f9f9f9;
+    border: none;
+    box-shadow: none;
+    min-width: auto;
+    display: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .has-dropdown.open .dropdown {
+    display: block;
+  }
+
+  .dropdown a {
+    padding: 10px 40px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    position: static;
+    text-align: center;
+  }
+
+  .social-inline {
+    position: static;
+    justify-content: center;
+    margin-top: 10px;
+  }
 }
