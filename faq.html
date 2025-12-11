@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Denpasar Institute</title>
+  <link rel="stylesheet" href="style/faq.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-</html>
 <header class="site-header">
-    <link rel="stylesheet" href="style/faq.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <div class="container header-inner">
     
       <!-- mobile hamburger -->
@@ -19,7 +25,7 @@
           <li><a href="home.html">Home</a></li>
           <li><a href="aboutus.html">About Us</a></li>
           <li class="has-dropdown">
-            <a href="program.html"> Program <span class="caret">▾</span></a>
+            <a href="program.html">Program <span class="caret">▾</span></a>
             <ul class="dropdown">
               <li><a href="detail program.html">Student Exchanges</a></li>
               <li><a href="detail program.html">Overseas Study</a></li>
@@ -53,6 +59,8 @@
       </div>
     </div>
   </header>
+
+<main>
   <div class="faq-header">
     <h2 class="faq-title">Do You Have Questions?</h2>
     <p class="faq-subtitle">
@@ -179,4 +187,70 @@
     </div>
   </div>
 </footer>
-  </html>
+
+</main>
+
+<!-- Hamburger & Dropdown functionality -->
+<script>
+  // Hamburger toggle for mobile nav
+  const hamburger = document.querySelector('.hamburger');
+  const mainNav = document.getElementById('mainNav');
+  
+  if (hamburger && mainNav) {
+    hamburger.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      const newState = !isExpanded;
+      
+      this.setAttribute('aria-expanded', newState);
+      mainNav.classList.toggle('open');
+      
+      if (!newState) {
+        document.querySelectorAll('.has-dropdown.open').forEach(function(dropdown) {
+          dropdown.classList.remove('open');
+          dropdown.querySelector('a').setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      const isNavOpen = mainNav.classList.contains('open');
+      const clickedInsideNav = mainNav.contains(e.target);
+      const clickedHamburger = hamburger.contains(e.target);
+      
+      if (isNavOpen && !clickedInsideNav && !clickedHamburger) {
+        mainNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        
+        document.querySelectorAll('.has-dropdown.open').forEach(function(dropdown) {
+          dropdown.classList.remove('open');
+          dropdown.querySelector('a').setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
+
+  // Toggle dropdown on small screens
+  document.querySelectorAll('.has-dropdown > a').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      if (window.innerWidth < 760) {
+        e.preventDefault();
+        const parent = anchor.parentElement;
+        const wasOpen = parent.classList.contains('open');
+        
+        document.querySelectorAll('.has-dropdown.open').forEach(function(dropdown) {
+          if (dropdown !== parent) {
+            dropdown.classList.remove('open');
+            dropdown.querySelector('a').setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        parent.classList.toggle('open');
+        const isOpen = !wasOpen;
+        anchor.setAttribute('aria-expanded', isOpen);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
