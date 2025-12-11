@@ -488,4 +488,141 @@
         right: 0;
       }
       
- 
+ /* ============================= */
+/*        PROGRAM SECTION        */
+/* ============================= */
+
+.program-section {
+  padding: 80px 0;
+  background: #f5f5f5;
+  width: 100%;
+}
+
+.program-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #222;
+}
+
+/* Carousel wrapper */
+.program-carousel {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.program-carousel > .program-card {
+  flex: 0 0 30%;
+}
+
+/* Modern Card */
+.program-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+  transition: 0.3s ease;
+  max-width: 320px;
+}
+
+.program-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.17);
+}
+
+/* Image */
+.program-image {
+  width: 100%;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 14px;
+  margin-bottom: 15px;
+}
+
+/* Example images (bisa diganti) */
+.img2 { background-image: url("gallery/prescon.webp"); }
+.img3 { background-image: url("https://source.unsplash.com/400x300/?career"); }
+.img4 { background-image: url("https://source.unsplash.com/400x300/?university"); }
+
+.program-card h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.program-desc {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Button */
+.detail-btn {
+  display: block;
+  background: #d60000;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  transition: 0.25s;
+}
+
+.detail-btn:hover {
+  background: #b30000;
+}
+
+/* Carousel Button */
+.carousel-btn {
+  background: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.25s;
+  font-size: 16px;
+}
+
+.carousel-btn:hover {
+  transform: scale(1.15);
+}
+
+.prev { margin-right: 10px; }
+.next { margin-left: 10px; }
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .program-carousel {
+      flex-wrap: wrap;
+  }
+
+  .program-card {
+      flex: 0 0 45%;
+      max-width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .program-card {
+      flex: 0 0 100%;
+      max-width: 100%;
+  }
+
+  .carousel-btn {
+      display: none;
+  }
+
+  .program-title {
+      font-size: 28px;
+  }
+}

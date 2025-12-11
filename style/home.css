@@ -42,10 +42,10 @@ a {color:inherit; text-decoration:none}
   border-radius:0;
   box-shadow:none;
 }
-.kicker {display:block; color:#fff; font-weight:700; font-size:16px; letter-spacing:1.5px; margin-bottom:12px; text-transform:uppercase; text-shadow:0 2px 8px rgba(0,0,0,0.3);}
-.overlay h1 {margin:0 0 20px; font-size:52px; line-height:1.1; text-shadow:0 2px 10px rgba(0,0,0,0.4); font-weight:700;}
-.overlay .lead {margin:0 0 24px; opacity:1; max-width:760px; margin-left:auto; margin-right:auto; text-shadow:0 2px 8px rgba(0,0,0,0.3); font-size:18px; line-height:1.6;}
-.btn {display:inline-block; background:var(--accent); color:#fff; padding:14px 28px; border-radius:6px; font-weight:700; font-size:16px; box-shadow:0 6px 18px rgba(214,40,40,0.16);}
+.kicker {display:block; color:#fff; font-weight:700; font-size:18px; letter-spacing:1.5px; margin-bottom:12px; text-transform:uppercase; text-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.overlay h1 {margin:0 0 20px; font-size:58px; line-height:1.1; text-shadow:0 2px 10px rgba(0,0,0,0.4); font-weight:700;}
+.overlay .lead {margin:0 0 24px; opacity:1; max-width:760px; margin-left:auto; margin-right:auto; text-shadow:0 2px 8px rgba(0,0,0,0.3); font-size:20px; line-height:1.6;}
+.btn {display:inline-block; background:var(--accent); color:#fff; padding:14px 28px; border-radius:6px; font-weight:700; font-size:17px; box-shadow:0 6px 18px rgba(214,40,40,0.16);}
 
 /* Responsive banner text */
 @media (max-width: 768px) {
@@ -71,7 +71,7 @@ a {color:inherit; text-decoration:none}
 .dots button.active {background:#fff; width:12px; height:12px;}
 
 /* Main layout */
-main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
+main {max-width:var(--max-width); margin:100px auto; padding:0 40px;}
 .intro {display:flex; gap:28px; align-items:flex-start; flex-wrap:wrap; margin-bottom:40px;}
 .card {background:var(--card); padding:24px; box-shadow:0 12px 30px rgba(2,6,12,0.08); flex:1; border-radius:8px;}
 .about {flex:1}
@@ -115,9 +115,53 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
 .how h2 {
   font-family: 'Inter', system-ui, Arial, sans-serif;
   font-weight: 700;
-  font-size: 35px;
-  line-height: 42px;
+  font-size: 40px;
+  line-height: 48px;
   text-align: center;
+
+/* --- Section spacing: larger vertical breathing room (desktop/tablet/mobile) --- */
+/* Use generous spacing to match large-site layout conventions */
+section,
+.intro-wrapper,
+.about-section,
+.stats,
+.programs,
+.how,
+.reviews-section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+/* Make hero clearly separated from following content */
+.hero { padding-bottom: 120px; }
+
+@media (max-width: 900px) {
+  section,
+  .intro-wrapper,
+  .about-section,
+  .stats,
+  .programs,
+  .how,
+  .reviews-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .hero { padding-bottom: 120px; }
+}
+
+@media (max-width: 480px) {
+  section,
+  .intro-wrapper,
+  .about-section,
+  .stats,
+  .programs,
+  .how,
+  .reviews-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .hero { padding-bottom: 120px; }
+}
   color: #000;
   margin: 0 0 56px;
 }
@@ -155,8 +199,8 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
 .step-text h4 {
   font-family: 'Inter', system-ui, Arial, sans-serif;
   font-weight: 600;
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 28px;
+  line-height: 34px;
   text-align: left;
   color: #000;
   margin: 0 0 18px;
@@ -165,8 +209,8 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
 .step-text p {
   font-family: 'Inter', system-ui, Arial, sans-serif;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 22px;
+  line-height: 28px;
   color: #656262;
   margin: 0;
 }
@@ -475,7 +519,7 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
 /* --- REPLACE: intro-wrapper as grid (stable alignment for card + portrait) --- */
 .intro-wrapper{
   max-width:var(--max-width);
-  margin:80px auto; /* jarak dari hero */
+  margin:160px auto 40px; /* lebih jarak di atas (dari hero) */
   padding:0 40px;
   position:relative;
   z-index:30;
@@ -707,7 +751,7 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
 
 /* title */
 .about-title{
-  font-size: 36px;
+  font-size: 40px;
   line-height: 1.3;
   margin: 0 0 32px;
   font-weight: 400;
@@ -727,7 +771,7 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
 .about-text{
   margin: 0 0 20px;
   color: #333;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.6;
   font-weight: 400;
 }
@@ -785,8 +829,8 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
 .stats-heading {
   font-family: 'Inter', system-ui, Arial, sans-serif;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 38px;
+  font-size: 40px;
+  line-height: 48px;
   color: #000;
   margin: 0 auto 12px;
   letter-spacing: 0.5px;
@@ -825,8 +869,8 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
   display: block;
   font-family: 'Inter', system-ui, Arial, sans-serif;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 58px;
+  font-size: 52px;
+  line-height: 62px;
   color: #000;
   margin-bottom: 8px;
 }
@@ -835,8 +879,8 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
   display: block;
   font-family: 'Inter', system-ui, Arial, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 22px;
   color: #000;
 }
 
@@ -1046,5 +1090,290 @@ main {max-width:var(--max-width); margin:60px auto; padding:0 40px;}
   }
   .review-card {
     width: 80%;
+  }
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+
+/* Mobile responsiveness for intro-wrapper section */
+@media (max-width: 768px) {
+  .intro-wrapper {
+    margin: 100px auto 30px;
+    padding: 0 20px;
+  }
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .side-image img {
+    height: 320px;
+  }
+  .card h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .card p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .card {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-wrapper {
+    margin: 60px auto 20px;
+    padding: 0 16px;
+  }
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .side-image img {
+    height: 240px;
+  }
+  .card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  .card p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .card {
+    padding: 20px 16px;
+  }
+}
+
+/* Mobile responsiveness for programs section */
+@media (max-width: 768px) {
+  .programs {
+    margin: 60px 0 40px;
+    padding: 0 20px;
+  }
+  .programs h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .program {
+    padding: 16px;
+  }
+  .program h4 {
+    font-size: 18px;
+  }
+  .program p {
+    font-size: 14px;
+  }
+  .program img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .programs {
+    margin: 40px 0 30px;
+    padding: 0 16px;
+  }
+  .programs h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .program {
+    padding: 14px;
+  }
+  .program h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .program p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .program img {
+    height: 160px;
+  }
+}
+
+/* Mobile responsiveness for main content area */
+@media (max-width: 768px) {
+  main {
+    margin: 100px auto;
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    margin: 100px auto;
+    padding: 0 30px;
+  }
+}
+
+/* Mobile responsiveness for navbar - Hamburger menu only */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    margin-right: auto;
+  }
+  
+  /* Hide full nav on tablet, show only in mobile dropdown */
+  .main-nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #e6e6e6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    display: flex;
+    justify-content: center;
+    z-index: 99;
+  }
+  
+  .main-nav.open {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    align-items: stretch;
+  }
+  
+  .nav-list > li {
+    border-bottom: 1px solid #f0f0f0;
+    height: auto;
+  }
+  
+  .nav-list a {
+    color: #222;
+    font-size: 14px;
+    padding: 14px 16px;
+    text-transform: uppercase;
+    height: auto;
+  }
+  
+  .nav-list a:hover,
+  .nav-list a.active {
+    background: #f5f5f5;
+    color: #b21a1a;
+  }
+  
+  .dropdown {
+    position: static;
+    transform: none;
+    top: auto;
+    background: #f9f9f9;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    min-width: auto;
+    border-radius: 0;
+    padding: 0;
+    display: none;
+  }
+  
+  .dropdown.open {
+    display: block;
+  }
+  
+  .dropdown a {
+    padding: 12px 32px;
+    font-size: 13px;
+    color: #555;
+  }
+  
+  .dropdown a:hover {
+    background: #e8e8e8;
+    color: #b21a1a;
+  }
+  
+  .header-right {
+    gap: 8px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .lang-selector {
+    display: none;
+  }
+  
+  .auth-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hamburger {
+    display: block;
+    padding: 10px;
+  }
+  
+  .header-inner {
+    padding: 0 8px;
+    height: 60px;
+  }
+  
+  .main-nav.open {
+    max-height: 400px;
+  }
+  
+  .nav-list a {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+  
+  .dropdown a {
+    padding: 10px 28px;
+    font-size: 12px;
+  }
+  
+  .auth-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Mobile responsiveness for footer */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .footer-column p,
+  .footer-column a {
+    font-size: 13px;
   }
 }
