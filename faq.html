@@ -80,23 +80,63 @@
 
 <div class="faq-section">
     <div class="faq-column">
-        <h3>General FAQs</h3>
-        <ul class="faq-list">
-            <li>What is Consultative Denpasar Institute?</li>
-            <li>How can I contact your team?</li>
-            <li>Do I need to pay to join your consultation?</li>
-            <li>Can I book an appointment online?</li>
-        </ul>
+      <h3>General FAQs</h3>
+      <ul class="faq-list">
+        <li>
+          <button class="faq-question" aria-expanded="false">What is Consultative Denpasar Institute?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Denpasar Institute adalah lembaga riset dan pengembangan SDM yang menyediakan konsultasi pendidikan, program pertukaran pelajar, dan layanan pengembangan karier untuk siswa dan profesional.
+          </div>
+        </li>
+        <li>
+          <button class="faq-question" aria-expanded="false">How can I contact your team?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Anda dapat menghubungi kami melalui email info@denpasarinstitute.com atau telepon di 087865309966. Atau gunakan formulir kontak pada halaman Contact.
+          </div>
+        </li>
+        <li>
+          <button class="faq-question" aria-expanded="false">Do I need to pay to join your consultation?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Beberapa layanan dasar kami gratis, namun program konsultasi mendalam dan beberapa layanan premium mungkin berbiaya. Silakan cek halaman program untuk rincian biaya.
+          </div>
+        </li>
+        <li>
+          <button class="faq-question" aria-expanded="false">Can I book an appointment online?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Ya — Anda dapat memesan janji secara online melalui halaman Registration atau mengirimkan pertanyaan melalui formulir di halaman Contact/FAQ.
+          </div>
+        </li>
+      </ul>
     </div>
 
     <div class="faq-column">
-        <h3>Program & Services FAQs</h3>
-        <ul class="faq-list">
-            <li>What kind of programs do you offer?</li>
-            <li>Can I apply if I'm still a student?</li>
-            <li>What documents do I need to prepare for a consultation?</li>
-            <li>Are your services available for international students?</li>
-        </ul>
+      <h3>Program & Services FAQs</h3>
+      <ul class="faq-list">
+        <li>
+          <button class="faq-question" aria-expanded="false">What kind of programs do you offer?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Kami menawarkan program Student Exchange, Overseas Study, Internship Study, dan Career Consultation yang disesuaikan dengan kebutuhan siswa dan institusi.
+          </div>
+        </li>
+        <li>
+          <button class="faq-question" aria-expanded="false">Can I apply if I'm still a student?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Ya. Banyak program kami ditujukan untuk pelajar. Periksa persyaratan program tertentu untuk batas usia atau kualifikasi tambahan.
+          </div>
+        </li>
+        <li>
+          <button class="faq-question" aria-expanded="false">What documents do I need to prepare for a consultation?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Umumnya siapkan identitas (KTP/Paspor), transkrip nilai atau raport, dan dokumen pendukung lain yang relevan dengan jenis konsultasi.
+          </div>
+        </li>
+        <li>
+          <button class="faq-question" aria-expanded="false">Are your services available for international students?<span class="chev">▾</span></button>
+          <div class="faq-answer" hidden>
+            Ya — kami melayani siswa internasional dan menyediakan panduan serta dukungan bahasa bila diperlukan.
+          </div>
+        </li>
+      </ul>
     </div>
 </div>
 
@@ -248,6 +288,54 @@
         const isOpen = !wasOpen;
         anchor.setAttribute('aria-expanded', isOpen);
       }
+    });
+  });
+  
+  // FAQ: open on hover, close when cursor leaves; clicks still toggle on touch/keyboard
+  document.querySelectorAll('.faq-list li').forEach(function(li) {
+    const btn = li.querySelector('.faq-question');
+    const answer = li.querySelector('.faq-answer');
+    if (!btn || !answer) return;
+
+    function open() {
+      btn.setAttribute('aria-expanded', 'true');
+      answer.hidden = false;
+      requestAnimationFrame(function() {
+        answer.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      });
+    }
+
+    function close() {
+      btn.setAttribute('aria-expanded', 'false');
+      // set to current height then collapse for smooth animation
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      requestAnimationFrame(function() {
+        answer.style.maxHeight = '0';
+        answer.classList.remove('open');
+      });
+      answer.addEventListener('transitionend', function handler() {
+        answer.hidden = true;
+        answer.style.maxHeight = '';
+        answer.removeEventListener('transitionend', handler);
+      }, { once: true });
+    }
+
+    // Hover behavior for pointer devices
+    li.addEventListener('mouseenter', function() {
+      open();
+    });
+
+    li.addEventListener('mouseleave', function() {
+      close();
+    });
+
+    // Click fallback (touch or keyboard) toggles the panel
+    btn.addEventListener('click', function(e) {
+      // prevent default button behaviour
+      e.preventDefault();
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      if (isOpen) close(); else open();
     });
   });
 </script>
