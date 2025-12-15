@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Mahasiswa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #d62828;
+            --muted: #f2f5f8;
+            --dark: #12232f;
+            --card: #ffffff;
+            --max-width: 1100px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            color: #222;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Site Header / Navbar */
+        .site-header {
+            background: linear-gradient(135deg, #d62828 0%, #a01f1f 100%);
+            border-bottom: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: none;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .site-header.scrolled {
+            background: #fff;
+            border-bottom: 1px solid #e6e6e6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            position: relative;
+            gap: 40px;
+            padding: 0 18px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .main-nav {
+            flex: 1;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .nav-list > li {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .nav-list a:hover, .nav-list a.active {
+            color: #ffeb3b;
+        }
+
+        .site-header.scrolled .nav-list a {
+            color: #222;
+        }
+
+        .site-header.scrolled .nav-list a:hover, .site-header.scrolled .nav-list a.active {
+            color: #b21a1a;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            min-width: 200px;
+            justify-content: flex-end;
+        }
+
+        .lang-selector {
+            position: relative;
+        }
+
+        .lang {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #fff;
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        .site-header.scrolled .lang {
+            border: 1px solid #ddd;
+            color: #222;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 4px;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            display: none;
+            z-index: 200;
+            min-width: 100px;
+        }
+
+        .lang-selector:hover .lang-dropdown {
+            display: block;
+        }
+
+        .lang-dropdown li {
+            list-style: none;
+        }
+
+        .lang-dropdown a {
+            padding: 8px 12px;
+            display: block;
+            text-decoration: none;
+            color: #222;
+            font-size: 13px;
+        }
+
+        .lang-dropdown a:hover, .lang-dropdown a.active {
+            background: #f5f5f5;
+        }
+
+        .auth-btn {
+            color: #fff;
+            background: #b21a1a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .auth-btn:hover {
+            background: #981616;
+        }
+
+        .hamburger {
+            display: none;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger-box {
+            width: 24px;
+            height: 20px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+            width: 24px;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+            transition: transform 0.15s ease, background-color 0.3s;
+        }
+
+        .site-header.scrolled .hamburger-inner, .site-header.scrolled .hamburger-inner::before, .site-header.scrolled .hamburger-inner::after {
+            background-color: #222;
+        }
+
+        .hamburger-inner::before, .hamburger-inner::after {
+            content: "";
+            display: block;
+        }
+
+        .hamburger-inner::before {
+            top: -8px;
+        }
+
+        .hamburger-inner::after {
+            bottom: -8px;
+        }
+
+        .hamburger[aria-expanded="true"] .hamburger-inner {
+            transform: rotate(45deg);
+        }
+
+        .hamburger[aria-expanded="true"] .hamburger-inner::before {
+            top: 0;
+            opacity: 0;
+        }
+
+        .hamburger[aria-expanded="true"] .hamburger-inner::after {
+            bottom: 0;
+            transform: rotate(-90deg);
+        }
+
+        .has-dropdown {
+            position: relative;
+        }
+
+        .has-dropdown .caret {
+            font-size: 11px;
+            margin-left: 6px;
+            opacity: 0.8;
+        }
+
+        .dropdown {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            margin-top: 0;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-width: 200px;
+            display: none;
+            border-radius: 4px;
+            padding: 8px 0;
+            z-index: 200;
+        }
+
+        .has-dropdown:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown li {
+            list-style: none;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 10px 14px;
+            color: #333;
+            font-size: 14px;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .dropdown a:hover {
+            background: #f5f5f5;
+        }
+
+        /* Page Header Section */
+        .header {
+            background: linear-gradient(135deg, #d62828 0%, #a01f1f 100%);
+            color: white;
+            padding: 20px 20px 60px;
+            text-align: center;
+            box-shadow: none;
+            margin-top: 70px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Grid Container */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        /* Responsive Grid */
+        @media (max-width: 1200px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                padding: 35px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 25px 15px;
+            }
+        }
+
+        /* Student Card */
+        .student-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid #f0f0f0;
+        }
+
+        .student-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Card Background */
+        .card-background {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, #d62828 0%, #a01f1f 100%);
+            border-radius: 12px 12px 0 0;
+            position: relative;
+        }
+
+        .card-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="15" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="25" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 50px 20px 25px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Student Photo */
+        .student-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: -60px auto 20px;
+            border: 5px solid white;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: block;
+        }
+
+        /* Student Name */
+        .student-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+            word-wrap: break-word;
+        }
+
+        /* Student Info */
+        .student-info {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .student-info span {
+            display: block;
+        }
+
+        .student-info .department {
+            color: #d62828;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .student-info .year {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            padding: 0;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow: hidden;
+            align-self: center;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Modal Header */
+        .modal-header {
+            position: relative;
+            height: 120px;
+            background: linear-gradient(135deg, #d62828 0%, #a01f1f 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+            color: #d62828;
+            font-weight: bold;
+        }
+
+        .close-btn:hover {
+            background: #f0f0f0;
+            transform: rotate(90deg);
+        }
+
+        /* Modal Photo */
+        .modal-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: -60px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Modal Body */
+        .modal-body {
+            padding: 60px 25px 25px;
+            text-align: center;
+        }
+
+        .modal-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* Modal Detail Section */
+        .modal-detail {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .modal-detail-item {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            gap: 10px;
+        }
+
+        .modal-detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .modal-label {
+            font-weight: 600;
+            color: #d62828;
+            min-width: 80px;
+            font-size: 0.9rem;
+        }
+
+        .modal-value {
+            color: #333;
+            text-align: right;
+            flex: 1;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Modal Description */
+        .modal-description {
+            margin-top: 15px;
+            padding: 0 5px;
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .modal-description-title {
+            font-weight: 600;
+            color: #d62828;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .modal-description p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #8b0000, #b71c1c);
+            color: #fff;
+            padding: 60px 0 0;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 40px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            color: #ffeb3b;
+            margin-bottom: 15px;
+        }
+
+        .footer-column p,
+        .footer-column ul li {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-btn {
+            background: #ffeb3b;
+            color: #000;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px 40px;
+            margin-top: 40px;
+            font-size: 13px;
+            background: rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            text-align: center;
+            flex: 1;
+        }
+
+        .footer-bottom a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        .social-inline {
+            position: absolute;
+            right: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 26px;
+            height: 26px;
+            color: #fff;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #ffeb3b;
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                gap: 20px;
+                padding: 0 12px;
+            }
+
+            .nav-list {
+                gap: 16px;
+            }
+
+            .nav-list a {
+                font-size: 12px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .main-nav {
+                display: none;
+            }
+
+            .footer-container {
+                padding: 0 20px;
+                gap: 20px;
+            }
+
+            .footer-column {
+                min-width: 100%;
+            }
+
+            .social-inline {
+                position: relative;
+                right: auto;
+                margin-top: 20px;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .footer-bottom {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-inner {
+                gap: 12px;
+                height: 60px;
+                padding: 0 10px;
+            }
+
+            .logo {
+                min-width: 150px;
+            }
+
+            .nav-list {
+                gap: 12px;
+            }
+
+            .header-right {
+                min-width: auto;
+                gap: 8px;
+            }
+
+            .auth-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .footer-container {
+                padding: 0 15px;
+                gap: 15px;
+            }
+
+            .footer-column {
+                min-width: 100%;
+            }
+
+            .footer-column h3 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .footer-column p,
+            .footer-column ul li {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BEGIN: Navbar -->
+    <header class="site-header">
+        <div class="header-inner">
+            <!-- Mobile hamburger -->
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+
+            <nav id="mainNav" class="main-nav" role="navigation" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li class="has-dropdown">
+                        <a href="program.html" aria-haspopup="true" aria-expanded="false">Program <span class="caret">▾</span></a>
+                        <ul class="dropdown" aria-label="Program submenu">
+                            <li><a href="student.html">Student Exchanges</a></li>
+                            <li><a href="overseas.html">Overseas Study</a></li>
+                            <li><a href="overseas.html">Internship Study</a></li>
+                            <li><a href="career.html">Career Consultation</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="how it works.html">How It Works</a></li>
+                    <li><a href="register.html">Registration</a></li>
+                    <li class="has-dropdown">
+                        <a href="gallery.html" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret">▾</span></a>
+                        <ul class="dropdown" aria-label="Gallery submenu">
+                            <li><a href="gallery.html">Video</a></li>
+                            <li><a href="gallery.html">Foto</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="berita.html">News Update</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-right">
+                <div class="lang-selector">
+                    <button class="lang">ID <span class="caret">▾</span></button>
+                    <ul class="lang-dropdown">
+                        <li><a href="#" class="active">ID</a></li>
+                        <li><a href="#">EN</a></li>
+                    </ul>
+                </div>
+                <a class="auth-btn" href="login.html">Login User</a>
+            </div>
+        </div>
+    </header>
+    <!-- END: Navbar -->
+
+    <!-- Page Header -->
+    <!-- Page Header -->
+    <div class="header">
+        <h1>Profile Mahasiswa</h1>
+        <p>About us profile mahasiswa</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="grid-container" id="studentGrid">
+            <!-- Student cards akan dimuat di sini oleh JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal Detail Mahasiswa -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+                <img id="modalPhoto" class="modal-photo" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-name" id="modalName"></h2>
+                <div class="modal-detail">
+                    <div class="modal-detail-item">
+                        <span class="modal-label">NIM:</span>
+                        <span class="modal-value" id="modalNIM"></span>
+                    </div>
+                    <div class="modal-detail-item">
+                        <span class="modal-label">Jurusan:</span>
+                        <span class="modal-value" id="modalDept"></span>
+                    </div>
+                    <div class="modal-detail-item">
+                        <span class="modal-label">Angkatan:</span>
+                        <span class="modal-value" id="modalYear"></span>
+                    </div>
+                </div>
+                <div class="modal-description">
+                    <p class="modal-description-title">Deskripsi</p>
+                    <p id="modalDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Kolom 1: Contact -->
+            <div class="footer-column">
+                <h3>CONTACT US</h3>
+                <p>
+                    Jl. Ganetri IV No.4 DPS 80237 Bali<br>
+                    Jl. Sari Dana No.1 DPS 80116 Bali
+                </p>
+                <p>📞 <a href="tel:+6287865309966" class="footer-link">087865309966</a></p>
+                <p>📧 <a href="mailto:info@denpasarinstitute.com" class="footer-link">info@denpasarinstitute.com</a></p>
+                <a href="#" target="_blank" class="footer-link">denpasarinstitute.com</a><br>
+                <a href="https://maps.google.com/?q=Denpasar+Institute+Bali" target="_blank">
+                    <button class="footer-btn">Find Our Way</button>
+                </a>
+            </div>
+
+            <!-- Kolom 2: About -->
+            <div class="footer-column">
+                <h3>ABOUT US</h3>
+                <p>
+                    Denpasar Institute adalah Lembaga Riset & Pengembangan SDM yang berfokus pada riset, 
+                    pengembangan kompetensi, dan kolaborasi kegiatan sosial melalui CSR Program.
+                </p>
+            </div>
+
+            <!-- Kolom 3: Program -->
+            <div class="footer-column">
+                <h3>OUR PROGRAM</h3>
+                <ul>
+                    <li><a href="student.html" target="_blank">Student Exchanges</a></li>
+                    <li><a href="overseas.html" target="_blank">Overseas Study</a></li>
+                    <li><a href="overseas.html" target="_blank">Internship Study</a></li>
+                    <li><a href="career.html" target="_blank">Career Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bagian Bawah Footer -->
+        <div class="footer-bottom">
+            <p>
+                © 2025 Denpasar Institute. Designed by 
+                <a href="https://indoapps.id" target="_blank" class="highlight">PT. INDOAPPS SOLUSINDO</a> |
+                <a href="privacy_policy.html" target="_blank">Privacy Policy</a> |
+                <a href="terms_conditions.html" target="_blank">Terms & Condition</a> |
+                <a href="faq.html" target="_blank">FAQ</a>
+            </p>
+
+            <!-- Social Media Icons -->
+            <div class="social-inline">
+                <a href="#" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" target="_blank" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Mahasiswa
+        const studentData = [
+            {
+                id: 1,
+                name: "Ahmad Rifqi Pratama",
+                nim: "2021001234",
+                department: "Teknik Informatika",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+                description: "Mahasiswa dengan passion tinggi di bidang web development dan machine learning. Aktif mengikuti kompetisi dan sering berbagi pengetahuan dengan teman sekelas."
+            },
+            {
+                id: 2,
+                name: "Siti Nurhaliza Rahmawati",
+                nim: "2021001235",
+                department: "Sistem Informasi",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+                description: "Berpengalaman dalam business analysis dan project management. Memiliki kemampuan komunikasi yang excellent dan selalu siap membantu proyek kelompok."
+            },
+            {
+                id: 3,
+                name: "Muhammad Rizki Hidayat",
+                nim: "2021001236",
+                department: "Teknik Informatika",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+                description: "Spesialisasi di bidang cybersecurity dan network administration. Telah menyelesaikan beberapa sertifikasi profesional dan aktif di komunitas IT lokal."
+            },
+            {
+                id: 4,
+                name: "Fatimah Az-Zahra Putri",
+                nim: "2021001237",
+                department: "Sistem Informasi",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1517841905240-1c01a6b3147b?w=400&h=400&fit=crop",
+                description: "Expert dalam database design dan SQL optimization. Memiliki portofolio impressive dan telah menyelesaikan internship di perusahaan teknologi terkemuka."
+            },
+            {
+                id: 5,
+                name: "Bambang Suryanto",
+                nim: "2021001238",
+                department: "Teknik Informatika",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
+                description: "Fokus pada mobile app development dengan pengalaman menggunakan Flutter dan React Native. Sudah merilis beberapa aplikasi di Google Play Store."
+            },
+            {
+                id: 6,
+                name: "Dina Wijaya Kusuma",
+                nim: "2021001239",
+                department: "Sistem Informasi",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+                description: "Berprestasi di bidang UI/UX design dan frontend development. Memiliki portfolio design yang menawan dan selalu update dengan tren design terkini."
+            },
+            {
+                id: 7,
+                name: "Eko Prasetyo Utomo",
+                nim: "2021001240",
+                department: "Teknik Informatika",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+                description: "Ahli di backend development dengan expertise di Node.js dan Python. Telah berkontribusi pada beberapa open source project dan aktif di GitHub."
+            },
+            {
+                id: 8,
+                name: "Mira Saldana Wijaya",
+                nim: "2021001241",
+                department: "Sistem Informasi",
+                year: "2021",
+                photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+                description: "Specialist dalam data analytics dan business intelligence. Memiliki keahlian menggunakan tools seperti Tableau dan Power BI untuk data visualization."
+            }
+        ];
+
+        // Fungsi untuk menampilkan grid mahasiswa
+        function displayStudents() {
+            const gridContainer = document.getElementById('studentGrid');
+            gridContainer.innerHTML = '';
+
+            studentData.forEach(student => {
+                const cardHTML = `
+                    <div class="student-card" onclick="openModal(${student.id})">
+                        <div class="card-background"></div>
+                        <div class="card-content">
+                            <img src="${student.photo}" alt="${student.name}" class="student-photo">
+                            <div class="student-name">${student.name}</div>
+                            <div class="student-info">
+                                <span class="department">${student.department}</span>
+                                <span class="year">Angkatan ${student.year}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gridContainer.innerHTML += cardHTML;
+            });
+        }
+
+        // Fungsi untuk membuka modal
+        function openModal(studentId) {
+            const student = studentData.find(s => s.id === studentId);
+            if (!student) return;
+
+            document.getElementById('modalPhoto').src = student.photo;
+            document.getElementById('modalName').textContent = student.name;
+            document.getElementById('modalNIM').textContent = student.nim;
+            document.getElementById('modalDept').textContent = student.department;
+            document.getElementById('modalYear').textContent = student.year;
+            document.getElementById('modalDescription').textContent = student.description;
+
+            document.getElementById('studentModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fungsi untuk menutup modal
+        function closeModal() {
+            document.getElementById('studentModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Tutup modal saat klik di luar modal content
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('studentModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Tutup modal dengan tombol ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Inisialisasi halaman
+        window.addEventListener('DOMContentLoaded', function() {
+            displayStudents();
+        });
+
+        // Navbar scroll effect
+        (function() {
+            const header = document.querySelector('.site-header');
+            
+            if (!header) return;
+            
+            function handleScroll() {
+                const scrollPosition = window.scrollY;
+                
+                if (scrollPosition > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+            
+            handleScroll();
+            window.addEventListener('scroll', handleScroll);
+        })();
+
+        // Hamburger menu toggle
+        (function() {
+            const hamburger = document.querySelector('.hamburger');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (!hamburger || !mainNav) return;
+            
+            hamburger.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                
+                if (isExpanded) {
+                    mainNav.style.display = 'none';
+                } else {
+                    mainNav.style.display = 'block';
+                }
+            });
+            
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    mainNav.style.display = 'none';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
